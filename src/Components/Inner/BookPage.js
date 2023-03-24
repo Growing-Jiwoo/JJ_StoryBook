@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import styled from 'styled-components';
-import { motion, AnimatePresence } from "framer-motion";
-import { boldFontStyles } from "../../Style/fontStyle";
+import { AnimatePresence } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
+import { BookPageStyle, BackImageMentContainer, MoveLetterText, MoveMainText } from './styled'
 
-const backImages = Array.from({length: 64}, (_, i) => `/img/${i + 1}.jpg`);
+const BOOK_PAGE_IMAGE = Array.from({length: 64}, (_, i) => `/img/${i + 1}.jpg`);
 
-const backImagesMent = [
+const BOOK_PAGE_MENT = [
   "우리 제천 갔다가 아웃닭 가는 길~", 
   "제천 1등 키다리 미녀.jpg", 
   "아버님 뵈러 제천으로 출발~", 
@@ -75,76 +74,20 @@ const backImagesMent = [
   "우리의 처음", 
 ];
 
-const BookPageStyle = styled(motion.div)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 7px solid white;
-  height: 711px;
-  width: 400px;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-const BackImageMentContainer = styled.div`
-  padding: 10px;
-  font-size: 1.3rem;
-  ${boldFontStyles}
-  margin: 0px 0px -50px 0px;
-`;
-
-const MoveLetterText = styled(motion.div)`
-  font-size: 2rem;
-  position: fixed;
-  top: 50%;
-  right: 4.5%;
-  transform: translate(50%, -50%);
-  animation: blink 1.5s infinite;
-  cursor: pointer;
-  ${boldFontStyles}
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-`;
-
-const MoveMainText = styled(motion.div)`
-  font-size: 2rem;
-  position: fixed;
-  top: 50%;
-  left: -2%;
-  transform: translate(50%, -50%);
-  animation: blink 1.5s infinite;
-  cursor: pointer;
-  ${boldFontStyles}
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-`;
-
 export function BookPage() {
   const [imageIndex, setImageIndex] = useState(0);
   const navigate = useNavigate();
 
   const randomImage = () => {
-    setImageIndex(Math.floor(Math.random() * backImages.length));
+    setImageIndex(Math.floor(Math.random() * BOOK_PAGE_IMAGE.length));
   };
 
   return (
     <div className="App">
       <AnimatePresence>
         <BookPageStyle
-          key={backImages[imageIndex]}
-          style={{ backgroundImage: `url(${backImages[imageIndex]})` }}
+          key={BOOK_PAGE_IMAGE[imageIndex]}
+          style={{ backgroundImage: `url(${BOOK_PAGE_IMAGE[imageIndex]})` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -156,7 +99,7 @@ export function BookPage() {
           onAnimationComplete={randomImage}
         >
           <BackImageMentContainer>
-            {backImagesMent[imageIndex]}
+            {BOOK_PAGE_MENT[imageIndex]}
           </BackImageMentContainer>
         </BookPageStyle>
       </AnimatePresence>
