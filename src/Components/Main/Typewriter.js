@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { boldFontStyles } from "../../Style/fontStyle";
+import { flexCenterStyles } from "../../Style/flexStyle";
 
-const word = `안녕하세요 저는 김지우입니다.`;
+const word = `지현이와 지우가 함께 그려간 스토리북`;
 
 const TypewriterContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenterStyles}
   height: 100vh;
   width: 100vw;
   font-size: 4rem;

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { flexBottomCenterStyles } from "../../Style/flexStyle";
+import { boldFontStyles } from "../../Style/fontStyle";
 
 const CenteredDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  ${flexBottomCenterStyles}
   height: 100vh;
 `;
+
+const DaysPassedMent = styled.p`
+  ${boldFontStyles}
+  font-size: 1.1rem;
+  margin: 0px 0px 134px 0px;
+`
+
 
 export function DaysPassed() {
   const [daysPassed, setDaysPassed] = useState(null);
@@ -21,7 +28,7 @@ export function DaysPassed() {
 
   return (
     <CenteredDiv>
-      {daysPassed !== null && <p>Days Passed: {daysPassed}</p>}
+      {daysPassed !== null && <DaysPassedMent>우리가 사랑한지 {daysPassed}일 째</DaysPassedMent>}
     </CenteredDiv>
   );
 }
