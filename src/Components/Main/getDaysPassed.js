@@ -1,19 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { flexBottomCenterStyles } from "../../Style/flexStyle";
-import { boldFontStyles } from "../../Style/fontStyle";
-
-const CenteredDiv = styled.div`
-  ${flexBottomCenterStyles}
-  height: 100vh;
-`;
-
-const DaysPassedMent = styled.p`
-  ${boldFontStyles}
-  font-size: 1.1rem;
-  margin: 0px 0px 134px 0px;
-`
-
+import { CenteredDiv,DaysPassedMent } from './styled'
 
 export function DaysPassed() {
   const [daysPassed, setDaysPassed] = useState(null);
