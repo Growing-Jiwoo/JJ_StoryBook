@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { MainUi } from "./Components/Main/MainUi";
+import { BookPage } from "./Components/Inner/BookPage";
+import { Routes, Route } from 'react-router-dom';
+import "./App.css";
+import styled from "styled-components";
+
+const AppMain = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/img/Cherry_Blossom_46_B.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppMain>
+      <Routes>
+        <Route path="/" element={<MainUi />} />
+        <Route path="/image" element={<BookPage />} />
+      </Routes>
+    </AppMain>
   );
 }
 
